@@ -24,4 +24,4 @@ out = FG.get('system', 'global')
 pprint(out)
 
 FG.logout()
-#yeet
+
