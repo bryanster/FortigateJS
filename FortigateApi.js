@@ -15,7 +15,14 @@ class Api{
   getVip(){return this._hello("cmdb/firewall/vip/")}
   getIpsecP1(){return this._hello("cmdb/vpn.ipsec/phase1-interface/")}
   getIpsecP2(){return this._hello("cmdb/vpn.ipsec/phase2-interface/")}
-  async _hello(url){
+  getBackup(){return this._hello("monitor/system/config/backup?scope=global", false)}
+  getInterfaces(){return this._hello("monitor/system/available-interfaces")}
+  getDeviceState(){return this._hello("monitor/log/device/state")}
+  getDeviceGlobal(){return this._hello("cmdb/system/global")}
+  getAvProfile(){return this._hello("cmdb/antivirus/profile")}
+  getSslVpnSettings(){return this._hello("cmdb/vpn.ssl/settings")}
+  getSystemStatus(){return this._hello("/monitor/system/status", false)}
+   async _hello(url, returnjson){
     var options = {
       uri: `https://${this.endpoint}/api/v2/${url}`,
       headers: {
@@ -24,8 +31,13 @@ class Api{
       json: true // Automatically parses the JSON string in the response
     };
     var result = await r(options)
-    return result.results
-    
+
+    if (returnjson == false){
+      return result
+    }
+    else{
+      return result.results 
+    }
   }
 }
 
