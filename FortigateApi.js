@@ -26,7 +26,9 @@ class Api{
   getRouteTable(){return this._hello("monitor/router/ipv4")}
   getWebAppFirewall(){return this._hello("/cmdb/waf/profile")}
   getDnsFilter(){return this._hello("cmdb/dnsfilter/profile")}
-  getwebfilter(){return this._hello("cmdb/webfilter/profile")}
+  getWebFilter(){return this._hello("cmdb/webfilter/profile")}
+  getEmailFilter(){return this._hello("cmdb/emailfilter/profile")}
+  getLocalInPolicy(){return this._hello("monitor/firewall/local-in/")}
    async _hello(url, returnjson){
     if (this.Secure == false){
       var protocol = ("https://")
