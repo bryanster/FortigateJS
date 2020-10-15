@@ -1,8 +1,9 @@
 const r = require('request-promise');
 class Api{
-  constructor(token, endpoint){
+  constructor(token, endpoint, Secure = true ){
     this.token = token
     this.endpoint = endpoint
+    this.Secure = Secure
   }
   getPolicy(){return this._hello("cmdb/firewall/policy/")}
   getUser() {return this._hello("cmdb/user/local/")}
@@ -22,9 +23,15 @@ class Api{
   getAvProfile(){return this._hello("cmdb/antivirus/profile")}
   getSslVpnSettings(){return this._hello("cmdb/vpn.ssl/settings")}
   getSystemStatus(){return this._hello("/monitor/system/status", false)}
-   async _hello(url, returnjson){
+   async _hello(url, returnjson, Secure){
+    if (Secure == false){
+      var protocol = ("https://")
+    }
+    else{
+      var protocol = ("http://")
+    }
     var options = {
-      uri: `https://${this.endpoint}/api/v2/${url}`,
+      uri: `${protocol}${this.endpoint}/api/v2/${url}`,
       headers: {
           'Authorization': `Bearer ${this.token}`
       },
