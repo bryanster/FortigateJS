@@ -22,6 +22,7 @@ class Api{
   getAvProfile(){return this._hello("cmdb/antivirus/profile")}
   getSslVpnSettings(){return this._hello("cmdb/vpn.ssl/settings")}
   getSystemStatus(){return this._hello("/monitor/system/status", false)}
+  getUpgradePath(){return this._hello("monitor/system/firmware/upgrade-paths/", false)}
    async _hello(url, returnjson){
     var options = {
       uri: `https://${this.endpoint}/api/v2/${url}`,
@@ -43,10 +44,3 @@ class Api{
 
 module.exports = Api
 
-// module.exports = {
-//   getPolicy :  () => hello("cmdb/firewall/policy/"),
-//   getUser : () => hello("cmdb/user/local/"),
-//   createUser : (payload) => add("cmdb/user/local/", payload)
-
-
-// }
