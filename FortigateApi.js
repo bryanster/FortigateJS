@@ -24,6 +24,9 @@ class Api{
   getSslVpnSettings(){return this._hello("cmdb/vpn.ssl/settings")}
   getSystemStatus(){return this._hello("monitor/system/status", false)}
   getRouteTable(){return this._hello("monitor/router/ipv4")}
+  getWebAppFirewall(){return this._hello("/cmdb/waf/profile")}
+  getDnsFilter(){return this._hello("cmdb/dnsfilter/profile")}
+  getwebfilter(){return this._hello("cmdb/webfilter/profile")}
    async _hello(url, returnjson){
     if (this.Secure == false){
       var protocol = ("https://")
