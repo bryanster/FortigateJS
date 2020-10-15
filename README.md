@@ -1,8 +1,7 @@
 # FortiRest
 ## install 
-get dependacies  
+Install dependencies
  
-    npm install --save request
-    npm install --save request-promise
+    npm i
 
 
