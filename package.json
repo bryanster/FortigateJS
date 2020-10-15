@@ -1,0 +1,24 @@
+{
+  "name": "fortigatejs",
+  "version": "1.0.0",
+  "description": "A fortigate rest api handler",
+  "main": "main.js",
+  "dependencies": {
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryanster/fortigatejs.git"
+  },
+  "author": "bryanster",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryanster/fortigatejs/issues"
+  },
+  "homepage": "https://github.com/bryanster/fortigatejs#readme"
+}
