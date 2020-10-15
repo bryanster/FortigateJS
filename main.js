@@ -13,5 +13,5 @@ function writback(config){
     fs.writeFile('yeet.conf', config, 'utf8',(error)=>{
         return
     });
-    console.log("wrote to file")
+    console.log("wrote config to yeet.conf")
 }
