@@ -5,36 +5,36 @@ class Api {
     this.endpoint = endpoint
     this.Secure = Secure
   }
-  getPolicy() { return this._hello("cmdb/firewall/policy/") }
-  getUser() { return this._hello("cmdb/user/local/") }
-  getAdmin() { return this._hello("cmdb/system/admin/") }
-  getVdom() { return this._hello("cmdb/system/vdom/") }
-  getStaticRoute() { return this._hello("cmdb/router/static/") }
-  getService() { return this._hello("cmdb/firewall.service/custom/") }
-  getServiceGroup() { return this._hello("cmdb/firewall.service/group/") }
-  getShaper() { return this._hello("cmdb/firewall.shaper/traffic-shaper/") }
-  getVip() { return this._hello("cmdb/firewall/vip/") }
-  getIpsecP1() { return this._hello("cmdb/vpn.ipsec/phase1-interface/") }
-  getIpsecP2() { return this._hello("cmdb/vpn.ipsec/phase2-interface/") }
-  getBackup() { return this._hello("monitor/system/config/backup?scope=global", false) }
-  getInterfaces() { return this._hello("monitor/system/available-interfaces") }
-  getDeviceState() { return this._hello("monitor/log/device/state") }
-  getDeviceGlobal() { return this._hello("cmdb/system/global") }
-  getAvProfile() { return this._hello("cmdb/antivirus/profile") }
-  getSslVpnSettings() { return this._hello("cmdb/vpn.ssl/settings") }
-  getSystemStatus() { return this._hello("monitor/system/status", false) }
-  getRouteTable() { return this._hello("monitor/router/ipv4") }
-  getWebAppFirewall() { return this._hello("/cmdb/waf/profile") }
-  getDnsFilter() { return this._hello("cmdb/dnsfilter/profile") }
-  getWebFilter() { return this._hello("cmdb/webfilter/profile") }
-  getEmailFilter() { return this._hello("cmdb/emailfilter/profile") }
-  getLocalInPolicy() { return this._hello("monitor/firewall/local-in/") }
-  getFirewallDns() {return this._hello("cmdb/system/dns?datasource=1&with_meta=1")}
-  getSdwanInterfaces() {return this._hello("/monitor/virtual-wan/members")}
-  getIntrusionPrevention() {return this._hello("cmdb/ips/sensor")}
-  getApplicationControl() {return this._hello("cmdb/application/list")}
-  getSslInspection()  {return this._hello("cmdb/firewall/ssl-ssh-profile")}
-  async _hello(url, returnjson) {
+  getPolicy() { return this._get("cmdb/firewall/policy/") }
+  getUser() { return this._get("cmdb/user/local/") }
+  getAdmin() { return this._get("cmdb/system/admin/") }
+  getVdom() { return this._get("cmdb/system/vdom/") }
+  getStaticRoute() { return this._get("cmdb/router/static/") }
+  getService() { return this._get("cmdb/firewall.service/custom/") }
+  getServiceGroup() { return this._get("cmdb/firewall.service/group/") }
+  getShaper() { return this._get("cmdb/firewall.shaper/traffic-shaper/") }
+  getVip() { return this._get("cmdb/firewall/vip/") }
+  getIpsecP1() { return this._get("cmdb/vpn.ipsec/phase1-interface/") }
+  getIpsecP2() { return this._get("cmdb/vpn.ipsec/phase2-interface/") }
+  getBackup() { return this._get("monitor/system/config/backup?scope=global", false) }
+  getInterfaces() { return this._get("monitor/system/available-interfaces") }
+  getDeviceState() { return this._get("monitor/log/device/state") }
+  getDeviceGlobal() { return this._get("cmdb/system/global") }
+  getAvProfile() { return this._get("cmdb/antivirus/profile") }
+  getSslVpnSettings() { return this._get("cmdb/vpn.ssl/settings") }
+  getSystemStatus() { return this._get("monitor/system/status", false) }
+  getRouteTable() { return this._get("monitor/router/ipv4") }
+  getWebAppFirewall() { return this._get("/cmdb/waf/profile") }
+  getDnsFilter() { return this._get("cmdb/dnsfilter/profile") }
+  getWebFilter() { return this._get("cmdb/webfilter/profile") }
+  getEmailFilter() { return this._get("cmdb/emailfilter/profile") }
+  getLocalInPolicy() { return this._get("monitor/firewall/local-in/") }
+  getFirewallDns() {return this._get("cmdb/system/dns?datasource=1&with_meta=1")}
+  getSdwanInterfaces() {return this._get("/monitor/virtual-wan/members")}
+  getIntrusionPrevention() {return this._get("cmdb/ips/sensor")}
+  getApplicationControl() {return this._get("cmdb/application/list")}
+  getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
+  async _get(url, returnjson) {
     if (this.Secure == false) {
       var protocol = ("https://")
     }
