@@ -1,34 +1,31 @@
 const r = require('request-promise');
-
-
-function hello(url){
-  var options = {
-    uri: `https://firewall.nexezo.com/api/v2/${url}`,
-    headers: {
-        'User-Agent': 'Request-Promise',
-        'Authorization': 'Bearer wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb'
-    },
-    json: true // Automatically parses the JSON string in the response
-  };
-  return r(options)
-};
-function add(url, payload){
-  var options = {
-    method: 'POST',
-    uri: `https://firewall.nexezo.com/api/v2/${url}`,
-    headers: {
-      'Authorization': 'Bearer wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb'
-  },
-    body: payload,
-    json: true // Automatically stringifies the body to JSON
-};
-return r(options)
+class Api{
+  constructor(token, endpoint){
+    this.token = token
+    this.endpoint = endpoint
+  }
+  getPolicy(){return this._hello("cmdb/firewall/policy/")}
+  getUser() {return this._hello("cmdb/user/local/")}
+  async _hello(url){
+    var options = {
+      uri: `https://${this.endpoint}/api/v2/${url}`,
+      headers: {
+          'Authorization': `Bearer ${this.token}`
+      },
+      json: true // Automatically parses the JSON string in the response
+    };
+    var result = await r(options)
+    return result.results
+    
+  }
 }
 
-module.exports = {
-  getPolicy :  () => hello("cmdb/firewall/policy/"),
-  getUser : () => hello("cmdb/user/local/"),
-  createUser : (payload) => add("cmdb/user/local/", payload)
+module.exports = Api
+
+// module.exports = {
+//   getPolicy :  () => hello("cmdb/firewall/policy/"),
+//   getUser : () => hello("cmdb/user/local/"),
+//   createUser : (payload) => add("cmdb/user/local/", payload)
 
 
-}
+// }

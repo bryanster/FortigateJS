@@ -1,23 +1,11 @@
-var yeet = require("./FortigateApi")
+const Api = require("./FortigateApi")
+var Yeet = require("./FortigateApi")
 
 
 async function main(){
-    // console.log(await yeet.getPolicy())
-    // console.log(await yeet.getUser())
-    console.log(await yeet.createUser(payload))
+    var yeet = new Yeet("wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb", "firewall.nexezo.com")
+    console.log(await yeet.getUser())
 }
 main()
 
 
-
-var payload = {'json':
-                    {
-                    'name':  "yeetur",
-                    'passwd': "Welkom01",
-                    'type': "password",
-                    'status': "enable",
-                    'email-to': '',
-                    'ldap-server': '',
-                    'radius-server': '',
-                    }     
-                }
