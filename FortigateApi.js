@@ -29,6 +29,11 @@ class Api {
   getWebFilter() { return this._hello("cmdb/webfilter/profile") }
   getEmailFilter() { return this._hello("cmdb/emailfilter/profile") }
   getLocalInPolicy() { return this._hello("monitor/firewall/local-in/") }
+  getFirewallDns() {return this._hello("cmdb/system/dns?datasource=1&with_meta=1")}
+  getSdwanInterfaces() {return this._hello("/monitor/virtual-wan/members")}
+  getIntrusionPrevention() {return this._hello("cmdb/ips/sensor")}
+  getApplicationControl() {return this._hello("cmdb/application/list")}
+  getSslInspection()  {return this._hello("cmdb/firewall/ssl-ssh-profile")}
   async _hello(url, returnjson) {
     if (this.Secure == false) {
       var protocol = ("https://")
