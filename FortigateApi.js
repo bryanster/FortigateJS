@@ -9,7 +9,7 @@ class Api{
   getUser() {return this._hello("cmdb/user/local/")}
   getAdmin(){return this._hello("cmdb/system/admin/")}
   getVdom(){return this._hello("cmdb/system/vdom/")}
-  getSRoute(){return this._hello("cmdb/router/static/")}
+  getStaticRoute(){return this._hello("cmdb/router/static/")}
   getService(){return this._hello("cmdb/firewall.service/custom/")}
   getServiceGroup(){return this._hello("cmdb/firewall.service/group/")}
   getShaper(){return this._hello("cmdb/firewall.shaper/traffic-shaper/")}
