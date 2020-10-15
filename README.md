@@ -1,6 +1,6 @@
 # FortiRest
 ## install 
-get dependacies  
+Install dependencies
  
     npm i
 
