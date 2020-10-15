@@ -23,8 +23,8 @@ class Api{
   getAvProfile(){return this._hello("cmdb/antivirus/profile")}
   getSslVpnSettings(){return this._hello("cmdb/vpn.ssl/settings")}
   getSystemStatus(){return this._hello("/monitor/system/status", false)}
-   async _hello(url, returnjson, Secure){
-    if (Secure == false){
+   async _hello(url, returnjson){
+    if (this.Secure == false){
       var protocol = ("https://")
     }
     else{
