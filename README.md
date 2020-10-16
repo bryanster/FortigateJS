@@ -44,6 +44,9 @@ rerurns all Anti-virus profiles
 
 wil return the full firewall config this
 
+    getRouteTable()
+ to get the routing table
+
 
 ### operations
 ___
