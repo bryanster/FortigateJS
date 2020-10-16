@@ -44,13 +44,7 @@ class Api {
         'Authorization': `Bearer ${this.token}`
       },
     };
-    axios(options)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-});
+    return axios(options)
   }
   async _post(url, payload){
     var data = payload;
@@ -66,13 +60,8 @@ class Api {
       data : data
     };
 
-    axios(options)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    return axios(options)
+    
   }
 }
 
