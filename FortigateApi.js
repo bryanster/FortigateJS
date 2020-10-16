@@ -54,7 +54,7 @@ class Api {
   }
   async _post(url, payload){
     var data = payload;
-    var config = {
+    var options = {
       method: 'post',
       url: `https://${this.endpoint}/api/v2/${url}`,
       headers: { 
@@ -66,7 +66,7 @@ class Api {
       data : data
     };
 
-    axios(config)
+    axios(options)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
     })
