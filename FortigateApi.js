@@ -1,4 +1,4 @@
-const r = require('request-promise');
+var axios = require('axios');
 class Api {
   constructor(token, endpoint,Secure = true ) {
     this.token = token
@@ -36,49 +36,43 @@ class Api {
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
-  async _get(url, returnjson) {
-    if (this.Secure == false) {
-      var protocol = ("https://")
-    }
-    else {
-      var protocol = ("http://")
-    }
+  async _get(url) {
     var options = {
-      uri: `${protocol}${this.endpoint}/api/v2/${url}`,
+      method: 'get',
+      url: `https://${this.endpoint}/api/v2/${url}`,
       headers: {
         'Authorization': `Bearer ${this.token}`
       },
-      json: true // Automatically parses the JSON string in the response
     };
-    var result = await r(options)
-
-    if (returnjson == false) {
-      return result
-    }
-    else {
-      return result.results
-    }
+    axios(options)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+});
   }
   async _post(url, payload){
-  var request = require('request');
-  var options = {
-    'method': 'POST',
-    'url': `https://${this.endpoint}/api/v2/${url}`,
-    'headers': {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Accept': 'application/json, text/plain, */*',
-      'X-Requested-With': 'XMLHttpRequest',
-      'Authorization': 'Bearer wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb'
-    },
-    
-    
-  };
-  options.body = payload
-  console.log(options)
-  request(options, function (error, response) {
-    if (error) throw new Error(error);
-    console.log(response.body);
-  });
+    var data = payload;
+    var config = {
+      method: 'post',
+      url: `https://${this.endpoint}/api/v2/${url}`,
+      headers: { 
+        'Content-Type': 'application/json;charset=UTF-8', 
+        'Accept': 'application/json, text/plain, */*', 
+        'X-Requested-With': 'XMLHttpRequest',  
+        'Authorization': `Bearer ${this.token}`
+      },
+      data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 }
 
