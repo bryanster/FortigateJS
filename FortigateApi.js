@@ -35,6 +35,7 @@ class Api {
   getApplicationControl() {return this._get("cmdb/application/list")}
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
+  reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"rebooted by Rest api"}))}
   async _get(url, returnjson) {
     if (this.Secure == false) {
       var protocol = ("https://")
@@ -70,7 +71,7 @@ class Api {
       'Authorization': 'Bearer wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb'
     },
     
-  
+    
   };
   options.body = payload
   console.log(options)
