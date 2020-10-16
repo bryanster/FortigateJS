@@ -21,4 +21,4 @@ after that you can call on a  function for example:
 
     console.log(fortigate1.createAdmin(payload)))
 
-you can find an example payload here
+you can find an example payload in [/Payloads](https://github.com/bryanster/FortigateJS/tree/master/Payloads)
