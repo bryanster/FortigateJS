@@ -22,6 +22,12 @@ after that you can call on a  function for example:
     console.log(fortigate1.createAdmin(payload)))
 
 you can find an example payload in [/Payloads](https://github.com/bryanster/FortigateJS/tree/master/Payloads)
+  
+to ignore Certificate errors put 
+
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+on top of your code
 
 ## Functions
 ### Get
