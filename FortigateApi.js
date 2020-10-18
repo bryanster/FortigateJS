@@ -36,6 +36,10 @@ class Api {
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
   createAVProfile(payload) {return this._post("cmdb/antivirus/profile", `${payload}`)}
+  createAppProfile(payload) {return this._post("cmdb/application/list", `${payload}`)}
+  createWFProfile(payload) {return this._post("cmdb/webfilter/profile", `${payload}`)}
+  createDFProfile(payload) {return this._post("cmdb/dnsfilter/profile", `${payload}`)}
+  createpolicy(payload) {return this._post("cmdb/firewall/policy", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
   async _get(url) {
     var options = {
