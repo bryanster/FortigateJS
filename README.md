@@ -1,4 +1,4 @@
-# FortiRest
+# FortigateApi
 ## install 
 Install dependencies
  
