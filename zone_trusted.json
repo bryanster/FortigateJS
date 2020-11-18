@@ -1,0 +1,17 @@
+{
+    "name": "Trusted",
+    "q_origin_key": "Trusted",
+    "tagging": [],
+    "description": "",
+    "intrazone": "allow",
+    "interface": [
+        {
+            "interface-name": "office",
+            "q_origin_key": "office"
+        },
+        {
+            "interface-name": "server",
+            "q_origin_key": "server"
+        }
+    ]
+}
