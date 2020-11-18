@@ -39,7 +39,9 @@ class Api {
   createAppProfile(payload) {return this._post("cmdb/application/list", `${payload}`)}
   createWFProfile(payload) {return this._post("cmdb/webfilter/profile", `${payload}`)}
   createDFProfile(payload) {return this._post("cmdb/dnsfilter/profile", `${payload}`)}
-  createpolicy(payload) {return this._post("cmdb/firewall/policy", `${payload}`)}
+  createPolicy(payload) {return this._post("cmdb/firewall/policy", `${payload}`)}
+  createZone(payload) {return this._post("/cmdb/system/zone/", `${payload}`)}
+  createVlan(payload) {return this._post("cmdb/system/interface", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
   async _get(url) {
     var options = {
