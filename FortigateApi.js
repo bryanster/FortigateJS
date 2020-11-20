@@ -70,6 +70,23 @@ class Api {
     return axios(options)
     
   }
+  async _put(url, payload){
+    var data = payload;
+    var options = {
+      method: 'put',
+      url: `https://${this.endpoint}/api/v2/${url}`,
+      headers: { 
+        'Content-Type': 'application/json;charset=UTF-8', 
+        'Accept': 'application/json, text/plain, */*', 
+        'X-Requested-With': 'XMLHttpRequest',  
+        'Authorization': `Bearer ${this.token}`
+      },
+      data : data
+    };
+
+    return axios(options)
+    
+  }
 }
 
 
