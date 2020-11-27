@@ -44,9 +44,14 @@ class Api {
   createZone(payload) {return this._post("/cmdb/system/zone/", `${payload}`)}
   createVlan(payload) {return this._post("cmdb/system/interface", `${payload}`)}
   createSniffer(payload) {return this._post("cmdb/firewall/sniffer", `${payload}`)}
+  createSslVpnPortal(payload) {return this._post("cmdb/vpn.ssl.web/portal", `${payload}`)}
+  createSdWanRoute(payload) {return this._post("cmdb/router/static", `${payload}`)}
+  createStaticRoute(payload) {return this._post("cmdb/router/static", `${payload}`)}
   startSniffer(mkey) {return this._post(`/monitor/system/sniffer/start/${mkey}/`, `{}`)}
   pauseSniffer(mkey) {return this._post(`/monitor/system/sniffer/stop/${mkey}/`, `{}`)}
   setSystemDNS(payload){return this._put("cmdb/system/dns", `${payload}`)}
+  setSslVpnSettings(payload){return this._put("cmdb/system/dns", `${payload}`)}
+  setSdWanSettings(payload){return this._put("cmdb/system/virtual-wan-link", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
   async _get(url) {
     var options = {
