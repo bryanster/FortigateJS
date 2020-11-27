@@ -34,6 +34,7 @@ class Api {
   getIntrusionPrevention() {return this._get("cmdb/ips/sensor")}
   getApplicationControl() {return this._get("cmdb/application/list")}
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
+  getSniffer(){return this._get("cmdb/firewall/sniffer")}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
   createAVProfile(payload) {return this._post("cmdb/antivirus/profile", `${payload}`)}
   createAppProfile(payload) {return this._post("cmdb/application/list", `${payload}`)}
@@ -42,6 +43,8 @@ class Api {
   createPolicy(payload) {return this._post("cmdb/firewall/policy", `${payload}`)}
   createZone(payload) {return this._post("/cmdb/system/zone/", `${payload}`)}
   createVlan(payload) {return this._post("cmdb/system/interface", `${payload}`)}
+  createSniffer(payload) {return this._post("cmdb/firewall/sniffer", `${payload}`)}
+  setSystemDNS(payload){return this._put("cmdb/system/dns", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
   async _get(url) {
     var options = {
