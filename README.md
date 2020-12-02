@@ -56,6 +56,18 @@ wil return the full firewall config this
 
 ### operations
 ___
+
+in the Payloads folder there are a few example payloads wich you can use/edit for your needs.  
+
 you can reboot the firewall by calling the reboot function
 
     reboot()
+
+to create a new vlan for example a Office vlan you can use the vlan office [Payload](https://github.com/bryanster/FortigateJS/blob/master/Payloads/vlan_office.json)
+you can call for load the file like:
+
+    off = fs.readfile("vlan_office.json")
+
+then use the variable in te call like this:
+
+    createVlan(off)
