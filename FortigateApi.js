@@ -35,6 +35,7 @@ class Api {
   getApplicationControl() {return this._get("cmdb/application/list")}
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
   getSniffer(){return this._get("cmdb/firewall/sniffer")}
+  getCapture(mkey){return this._get(`monitor/system/sniffer/download/${mkey}`)}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
   createAVProfile(payload) {return this._post("cmdb/antivirus/profile", `${payload}`)}
   createAppProfile(payload) {return this._post("cmdb/application/list", `${payload}`)}
