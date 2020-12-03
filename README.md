@@ -71,3 +71,5 @@ you can call for load the file like:
 then use the variable in te call like this:
 
     createVlan(off)
+
+the same can be done by using createZone() with the respected payload
