@@ -73,4 +73,8 @@ then use the variable in te call like this:
 
     createVlan(off)
 
-the same can be done by using createZone() with the respected payload
+the same can be done by using createZone() with the respected payload  
+  
+## Note:
+please note that this library is created without access to a API documentation.  
+if you have any improvements let me know!
