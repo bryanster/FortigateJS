@@ -54,16 +54,17 @@ wil return the full firewall config this
  to get the routing table
 
 
-### operations
+### Configuration
 ___
 
-in the Payloads folder there are a few example payloads wich you can use/edit for your needs.  
+in the Payloads folder there are a few example [Payload](https://github.com/bryanster/FortigateJS/blob/master/Payloads/vlan_office.json) wich you can use/edit for your needs.  
+for al the post opperation you need to include all values for the put operations you can Just add the value that you like to change (like normal JSON)
 
 you can reboot the firewall by calling the reboot function
 
     reboot()
 
-to create a new vlan for example a Office vlan you can use the vlan office [Payload](https://github.com/bryanster/FortigateJS/blob/master/Payloads/vlan_office.json)
+to create a new vlan for example a Office vlan you can use the vlan office 
 you can call for load the file like:
 
     off = fs.readfile("vlan_office.json")
