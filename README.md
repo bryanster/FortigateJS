@@ -5,6 +5,8 @@ Install dependencies
     npm i
 
 ## getting started
+this library currently works with a Fortigate API user  
+
 Create a Require for the js file
 
     var fortigateapi = require("./FortigateApi")
