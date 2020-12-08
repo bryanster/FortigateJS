@@ -107,3 +107,4 @@ dist
 main.js
 .gitignore
 test.js
+package-lock.json
