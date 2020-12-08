@@ -58,6 +58,8 @@ class Api {
   setSslVpnSettings(payload){return this._put("cmdb/system/dns", `${payload}`)}
   setSdWanSettings(payload){return this._put("cmdb/system/virtual-wan-link", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
+
+  RemoveDHCPserver(mkey){return this._put(`${mkey}`)}
   async _get(url) {
     var options = {
       method: 'get',
@@ -89,6 +91,22 @@ class Api {
     var data = payload;
     var options = {
       method: 'put',
+      url: `https://${this.endpoint}/api/v2/${url}`,
+      headers: { 
+        'Content-Type': 'application/json;charset=UTF-8', 
+        'Accept': 'application/json, text/plain, */*', 
+        'X-Requested-With': 'XMLHttpRequest',  
+        'Authorization': `Bearer ${this.token}`
+      },
+      data : data
+    };
+
+    return axios(options)
+    
+  }
+  async _delete(url){
+    var options = {
+      method: 'delete',
       url: `https://${this.endpoint}/api/v2/${url}`,
       headers: { 
         'Content-Type': 'application/json;charset=UTF-8', 
