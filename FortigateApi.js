@@ -44,6 +44,7 @@ class Api {
   createPolicy(payload) {return this._post("cmdb/firewall/policy", `${payload}`)}
   createZone(payload) {return this._post("/cmdb/system/zone/", `${payload}`)}
   createVlan(payload) {return this._post("cmdb/system/interface", `${payload}`)}
+  createDHCPserver(payload) {return this._post("cmdb/system.dhcp/server", `${payload}`)}
   createSniffer(payload) {return this._post("cmdb/firewall/sniffer", `${payload}`)}
   createSslVpnPortal(payload) {return this._post("cmdb/vpn.ssl.web/portal", `${payload}`)}
   createSdWanRoute(payload) {return this._post("cmdb/router/static", `${payload}`)}
