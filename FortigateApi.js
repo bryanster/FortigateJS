@@ -19,7 +19,7 @@ class Api {
   getVip() { return this._get("cmdb/firewall/vip/") }
   getIpsecP1() { return this._get("cmdb/vpn.ipsec/phase1-interface/") }
   getIpsecP2() { return this._get("cmdb/vpn.ipsec/phase2-interface/") }
-  getBackup() { return this._get("monitor/system/config/backup?scope=global", false) }
+  getBackup(file) { return this._download("monitor/system/config/backup?scope=global", file) }
   getInterfaces() { return this._get("monitor/system/available-interfaces") }
   getDeviceState() { return this._get("monitor/log/device/state") }
   getDeviceGlobal() { return this._get("cmdb/system/global") }
