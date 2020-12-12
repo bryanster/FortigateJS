@@ -1,4 +1,7 @@
 var axios = require('axios');
+const https = require("https");
+const fs = require("fs");
+
 class Api {
   constructor(token, endpoint,Secure = true ) {
     this.token = token
@@ -35,7 +38,7 @@ class Api {
   getApplicationControl() {return this._get("cmdb/application/list")}
   getSslInspection()  {return this._get("cmdb/firewall/ssl-ssh-profile")}
   getSniffer(){return this._get("cmdb/firewall/sniffer")}
-  getCapture(mkey){return this._get(`monitor/system/sniffer/download/${mkey}`)}
+  getCapture(mkey, filename){return this._download(`monitor/system/sniffer/download/${mkey}`, filename)}
   createAdmin(payload) {return this._post("cmdb/system/admin", `${payload}`)}
   createAVProfile(payload) {return this._post("cmdb/antivirus/profile", `${payload}`)}
   createAppProfile(payload) {return this._post("cmdb/application/list", `${payload}`)}
@@ -119,6 +122,20 @@ class Api {
 
     return axios(options)
     
+  }
+  _download(url, filename) {
+    const file = fs.createWriteStream(filename);
+    return new Promise((resolve, reject) => {
+      https.get(`https://${this.endpoint}/api/v2/${url}`, { headers: { 'Authorization': `Bearer ${this.token}` } }, function (response) {
+        if (response.statusCode !== 200) {
+          reject(new Error(`Something went wrong while downloading https://${this.endpoint}/api/v2/${url}`));
+        }
+
+        response.pipe(file);
+        resolve(true);
+      })
+    })
+
   }
 }
 
