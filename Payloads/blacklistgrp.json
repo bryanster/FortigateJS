@@ -1,0 +1,18 @@
+{
+    "name": "blacklist",
+    "q_origin_key": "",
+    "css-class": "ftnt-address-group ftnt-color-0",
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "member": [
+        {
+            "name": "test.nexezo.com"
+        }
+    ],
+    "exclude": "disable",
+    "exclude-member": [],
+    "visibility": "enable",
+    "color": "0",
+    "tagging": [],
+    "allow-routing": "disable",
+    "type": "src"
+}
