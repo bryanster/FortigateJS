@@ -54,7 +54,9 @@ class Api {
   createAddrgrp(payload) {return this._post("cmdb/firewall/addrgrp", `${payload}`)}
   createSdWanRoute(payload) {return this._post("cmdb/router/static", `${payload}`)}
   createStaticRoute(payload) {return this._post("cmdb/router/static", `${payload}`)}
-  createSnmpComunityV1(payload) {return this._post("/cmdb/system.snmp/community", `${payload}`)}
+  createIpsecP1(payload) {return this._post("cmdb/vpn.ipsec/phase1-interface", `${payload}`)}
+  createIpsecP2(payload) {return this._post("cmdb/vpn.ipsec/phase2-interface", `${payload}`)}
+  createSnmpComunityV1(payload) {return this._post("cmdb/system.snmp/community", `${payload}`)}
   startSniffer(mkey) {return this._post(`/monitor/system/sniffer/start/${mkey}/`, `{}`)}
   pauseSniffer(mkey) {return this._post(`/monitor/system/sniffer/stop/${mkey}/`, `{}`)}
   setSystemDNS(payload){return this._put("cmdb/system/dns", `${payload}`)}
