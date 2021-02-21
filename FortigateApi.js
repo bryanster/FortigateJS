@@ -63,6 +63,7 @@ class Api {
   setSystemSettings(payload){return this._put("mdb/system/global", `${payload}`)}
   setSnmpEnable(payload){return this._put("cmdb/system.snmp/sysinfo", `${payload}`)}
   setSslVpnSettings(payload){return this._put("cmdb/system/dns", `${payload}`)}
+  updateZone(zone, payload){return this._put(`cmdb/system/zone/${zone}`, `${payload}`)}
   updateAddrgrp(group, payload){return this._put(`cmdb/firewall/addrgrp/${group}`, `${payload}`)}
   setSdWanSettings(payload){return this._put("cmdb/system/virtual-wan-link", `${payload}`)}
   reboot() {return this._post("monitor/system/os/reboot", JSON.stringify({"event_log_message":"Rebooted by Rest api"}))}
