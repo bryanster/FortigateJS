@@ -1,1 +1,0 @@
-{"dns-service":"default","default-gateway":"10.2.2.254","netmask":"255.255.255.0","interface":"office","ip-range":[{"start-ip":"10.2.2.1","end-ip":"10.2.2.253"}]}
