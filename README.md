@@ -1,103 +1,82 @@
-# TSDX User Guide
+# FortigateApi
+## install 
+Install dependencies
+ 
+    npm i
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+## getting started
+this library currently works with a Fortigate API user  
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+Create a Require for the js file
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+    var fortigateapi = require("./FortigateApi")
 
-## Commands
+then create a new instance for a device for example:
 
-TSDX scaffolds your new library inside `/src`.
+    var fortigate1 = new fortigateapi("wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb", "firewall.nexezo.com")
 
-To run TSDX, use:
+The first value is the bearer token for your rest api admin  
 
-```bash
-npm start # or yarn start
-```
+The second value is the Base url of the firewall.
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+after that you can call on a  function for example:
 
-To do a one-off build, use `npm run build` or `yarn build`.
+    console.log(fortigate1.createAdmin(payload)))
 
-To run tests, use `npm test` or `yarn test`.
+you can find an example payload in [/Payloads](https://github.com/bryanster/FortigateJS/tree/master/Payloads)
+  
+to ignore Certificate errors put 
 
-## Configuration
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+on top of your code
 
-### Jest
+## Functions
+### Get
+___
+these functions are used to get information from the fortigate and can be ran without any risk.
 
-Jest tests are set up to run with `npm test` or `yarn test`.
+    getAdmin()
 
-### Bundle Analysis
+wil return all admin acounts with there properties in a json format
 
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
+    getApplicationControl()
 
-#### Setup Files
+wil return all Application controll profiles and settings
 
-This is the folder structure we set up for you:
+    getavprofile()
 
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
+rerurns all Anti-virus profiles
 
-### Rollup
+    getBackup()
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+wil return the full firewall config this
 
-### TypeScript
+    getRouteTable()
+ to get the routing table
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
 
-## Continuous Integration
+### Configuration
+___
 
-### GitHub Actions
+in the Payloads folder there are a few example [Payload](https://github.com/bryanster/FortigateJS/blob/master/Payloads/vlan_office.json) wich you can use/edit for your needs.  
+for al the post opperation you need to include all values for the put operations you can Just add the value that you like to change (like normal JSON)
 
-Two actions are added by default:
+you can reboot the firewall by calling the reboot function
 
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
+    reboot()
 
-## Optimizations
+to create a new vlan for example a Office vlan you can use the vlan office 
+you can call for load the file like:
 
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
+    off = fs.readfile("vlan_office.json")
 
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
+then use the variable in te call like this:
 
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
+    createVlan(off)
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+the same can be done by using createZone() with the respected payload  
+  
+## Note:
+please note that this library is created without access to a API documentation.  
+if you have any improvements let me know!

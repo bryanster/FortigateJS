@@ -1,4 +1,4 @@
-var axios = require('axios');
+import axios from 'axios';
 import https from "https";
 import fs from "fs";
 
