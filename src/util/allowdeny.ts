@@ -1,1 +1,1 @@
-type allowdeny = "allow" | "deny";
+type allowdeny = 'allow' | 'deny';
