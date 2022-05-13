@@ -1,4 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import axios from "axios";
 import https from 'https';
 import fs from 'fs';
