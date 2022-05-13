@@ -1,1 +1,0 @@
-{"primary":"1.1.1.1","secondary":"8.8.8.8","dns-over-tls":"disable","ssl-certificate":{"q_origin_key":"Fortinet_Factory","name":"Fortinet_Factory","datasource":"certificate.local"},"server-hostname":[],"domain":[],"ip6-primary":"::","ip6-secondary":"::","timeout":5,"retry":2,"dns-cache-limit":5000,"dns-cache-ttl":1800,"cache-notfound-responses":"disable","source-ip":"0.0.0.0"}

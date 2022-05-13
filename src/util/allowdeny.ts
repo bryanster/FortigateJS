@@ -1,0 +1,1 @@
+type allowdeny = 'allow' | 'deny';
