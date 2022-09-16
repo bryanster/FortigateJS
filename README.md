@@ -1,4 +1,11 @@
 # FortigateApi
+
+
+# warning
+This library is not maintained and should not be considered secure.  
+
+
+
 ## install 
 Install dependencies
  
