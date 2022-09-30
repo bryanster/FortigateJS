@@ -7,20 +7,27 @@ This library is not maintained and should not be considered secure.
 
 
 ## install 
-Install dependencies
+Install library
  
-    npm i
+    npm i fortigatejs
 
 ## getting started
-this library currently works with a Fortigate API user  
+this library currently works with a Fortigate API user 
+  
+create an api token under:
+System > Administrators > Create New > REST API Admin
+  
+You should limit this api key to a trusted host's 
+
+
 
 Create a Require for the js file
 
-    var fortigateapi = require("./FortigateApi")
+    var fortigateapi = require("fortigatejs")
 
 then create a new instance for a device for example:
 
-    var fortigate1 = new fortigateapi("wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb", "firewall.nexezo.com")
+    var forti = new fortigateapi("wf8jbbxGcnp9G7jf7Nw4s1QpmNq0fb", "firewall.nexezo.com")
 
 The first value is the bearer token for your rest api admin  
 
@@ -28,7 +35,7 @@ The second value is the Base url of the firewall.
 
 after that you can call on a  function for example:
 
-    console.log(fortigate1.createAdmin(payload)))
+    console.log(forti.createAdmin(payload)))
 
 you can find an example payload in [/Payloads](https://github.com/bryanster/FortigateJS/tree/master/Payloads)
   
@@ -36,7 +43,9 @@ to ignore Certificate errors put
 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-on top of your code
+on top of your code 
+Warning this should only be used for development purposes.  
+In production use valid certificates.
 
 ## Functions
 ### Get
@@ -60,6 +69,7 @@ rerurns all Anti-virus profiles
 wil return the full firewall config this
 
     getRouteTable()
+    
  to get the routing table
 
 
