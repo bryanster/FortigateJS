@@ -7,7 +7,13 @@ class Api {
   constructor(token: string, endpoint: string) {
     this.conn = { endpoint: endpoint, token: token };
   }
+
   getUser(): Promise<any> {
+    /**
+     * this function list all the users on the fortigate
+     * @returns {Promise<any>}
+     * 
+     */
     return _get('cmdb/user/local/', this.conn);
   }
   getAdmin(): Promise<any> {
@@ -105,6 +111,12 @@ class Api {
       this.conn
     );
   }
+  // createDomainAdderess(adddomain: add_domain_address): Promise<any> {
+  //   return _post(
+  //     'cmdb/firewall/address',
+  //     this.conn
+  //   );
+  // }
 }
 
 // createAdmin(payload : any) {
@@ -240,5 +252,8 @@ async function _download(url: string, filename: string, conn: apinterface) {
     );
   });
 }
-
 module.exports = Api;
+function _post(arg0: string, arg1: { name: any; type: string; fqdn: any; associated_interface: any; }, conn: apinterface): Promise<any> {
+  throw new Error('Function not implemented.');
+}
+
