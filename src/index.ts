@@ -1,6 +1,11 @@
 import axios from 'axios';
 import fs from 'fs';
 import https from 'https';
+/**
+ *  api librabry for the fortigate api
+ * it is a work in progress
+ * 
+ */
 
 class Api {
   conn: apinterface;
@@ -11,7 +16,12 @@ class Api {
   getUser(): Promise<any> {
     /**
      * this function list all the users on the fortigate
-     * @returns {Promise<any>}
+     * @returns the return is a object containing the users in a list this is under the key "results"
+     * 
+     * @example
+     * api.getUser().then((data) => {
+     *  console.log(data.results);
+     * });
      * 
      */
     return _get('cmdb/user/local/', this.conn);
@@ -235,13 +245,13 @@ async function _download(url: string, filename: string, conn: apinterface) {
   const file = fs.createWriteStream(filename);
   return new Promise((resolve, reject) => {
     https.get(
-      `https://${conn.endpoint}/conn/v2/${url}`,
+      `https://${conn.endpoint}/api/v2/${url}`,
       { headers: { Authorization: `Bearer ${conn.token}` } },
       function(response) {
         if (response.statusCode !== 200) {
           reject(
             new Error(
-              `Something went wrong while downloading https://${conn.endpoint}/conn/v2/${url}`
+              `Something went wrong while downloading https://${conn.endpoint}/api/v2/${url}`
             )
           );
         }
@@ -253,7 +263,7 @@ async function _download(url: string, filename: string, conn: apinterface) {
   });
 }
 module.exports = Api;
-function _post(arg0: string, arg1: { name: any; type: string; fqdn: any; associated_interface: any; }, conn: apinterface): Promise<any> {
-  throw new Error('Function not implemented.');
-}
+// function _post(arg0: string, arg1: { name: any; type: string; fqdn: any; associated_interface: any; }, conn: apinterface): Promise<any> {
+//   throw new Error('Function not implemented.');
+// }
 
